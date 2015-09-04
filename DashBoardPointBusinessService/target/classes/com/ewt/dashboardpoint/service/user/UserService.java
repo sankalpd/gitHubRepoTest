@@ -84,15 +84,4 @@ public interface UserService {
 	 * @return true if process is success otherwise it returns false
 	 */
 	public boolean deleteUserDetail(ServiceContext serviceContext, String userID);
-<<<<<<< HEAD
-	
-	/**
-	 * This service method used to register user in pended state
-	 * @param serviceContext
-	 * @param userDetailBO
-	 * @return
-	 */
-	public boolean registerUserInPendedState(ServiceContext serviceContext,UserDetailBO userDetailBO);
-=======
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 }

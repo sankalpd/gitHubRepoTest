@@ -21,11 +21,7 @@ import com.ewt.framework.logging.ILogger;
 public class UserServiceImpl implements UserService {
 	private static String CLASS_NAME = UserServiceImpl.class.getName();
 	private static ILogger logger = new ILogger();
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 	UserServiceImplInternal internalImplInstance = new UserServiceImplInternal();
 
 	/**
@@ -49,20 +45,6 @@ public class UserServiceImpl implements UserService {
 			//Begin Transaction
 			entityManager.getTransaction().begin();
 			//Perform Business Logic 
-<<<<<<< HEAD
-
-			boolean isEmailIdExists = checkIfEmailAddressExist(serviceContext, userDetailBO.getUserEmailId());
-
-			if (isEmailIdExists) {
-				logger.debug("Email Address Already exist's in DataBase");
-
-			} else {
-
-				isProcessSuccess = internalImplInstance.createUser(entityManager,userDetailBO );
-				if (isProcessSuccess == false) {
-					logger.debug("userId Already exists");
-
-=======
 			
 			boolean isEmailIdExists = checkIfEmailAddressExist(serviceContext, userDetailBO.getUserEmailId());
 			
@@ -75,19 +57,13 @@ public class UserServiceImpl implements UserService {
 				if (isProcessSuccess == false) {
 					logger.debug("userId Already exists");
 				
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 				} else {
 					//Commit Transaction
 					entityManager.getTransaction().commit();
 				}
 			}
-<<<<<<< HEAD
-
-
-=======
 			
 			
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} catch(RollbackException e) {
 			logger.debug("RollbackException "+e);
 			e.printStackTrace();
@@ -101,11 +77,7 @@ public class UserServiceImpl implements UserService {
 				entityManager.getTransaction().rollback();
 			}
 			//Log and Throw ProgrammingException
-<<<<<<< HEAD
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-=======
 		//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} finally {
 			// Close Entity manager if open
 			if (entityManager != null) {
@@ -116,11 +88,7 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return isProcessSuccess;
 	}
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 	/**
 	 * This method fetches user details based on Id
 	 * 
@@ -135,11 +103,7 @@ public class UserServiceImpl implements UserService {
 		final String METHOD_NAME = "fetchUserDetail(ServiceContext serviceContext,UserDetailBO userDetailBO)";
 		logger.entering(CLASS_NAME, METHOD_NAME);
 		EntityManager entityManager = null;
-<<<<<<< HEAD
-
-=======
 				
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		UserTable userTable = new UserTable();
 		UserDetailBO userBO = new UserDetailBO();
 		try {
@@ -149,30 +113,18 @@ public class UserServiceImpl implements UserService {
 			//Perform Business Logic 
 			userTable = internalImplInstance.fetchUserDetail(entityManager,userID);
 			userBO = UserObjectPreparationHelper.convertUserEntityToUserDetailBO(userTable);
-<<<<<<< HEAD
-
-		} catch(Exception e) {
-			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
-			e.printStackTrace();
-
-=======
 			
 		} catch(Exception e) {
 			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
 			e.printStackTrace();
 			
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 			// Release the DB resources
 			if (entityManager != null
 					&& entityManager.getTransaction().isActive()) {
 				entityManager.getTransaction().rollback();
 			}
 			//Log and Throw ProgrammingException
-<<<<<<< HEAD
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-=======
 		//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} finally {
 			// Close Entity manager if open
 			if (entityManager != null) {
@@ -194,11 +146,7 @@ public class UserServiceImpl implements UserService {
 		final String METHOD_NAME = "fetchAllUserDetail(ServiceContext serviceContext)";
 		logger.entering(CLASS_NAME, METHOD_NAME);
 		EntityManager entityManager = null;
-<<<<<<< HEAD
-
-=======
 				
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		List<Object[]> userTableList ;
 		List<UserDetailBO> userDetailBOList = null; 
 		try {
@@ -208,30 +156,18 @@ public class UserServiceImpl implements UserService {
 			//Perform Business Logic 
 			userTableList = internalImplInstance.fetchAllUserDetail(entityManager);
 			userDetailBOList = UserObjectPreparationHelper.convertUserDetailEntityListToUserDetailBOList(userTableList);
-<<<<<<< HEAD
-
-		} catch(Exception e) {
-			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
-			e.printStackTrace();
-
-=======
 			
 		} catch(Exception e) {
 			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
 			e.printStackTrace();
 			
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 			// Release the DB resources
 			if (entityManager != null
 					&& entityManager.getTransaction().isActive()) {
 				entityManager.getTransaction().rollback();
 			}
 			//Log and Throw ProgrammingException
-<<<<<<< HEAD
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-=======
 		//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} finally {
 			// Close Entity manager if open
 			if (entityManager != null) {
@@ -241,11 +177,7 @@ public class UserServiceImpl implements UserService {
 		logger.exiting(CLASS_NAME, METHOD_NAME);
 		return userDetailBOList;
 	}
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 	/**
 	 * This method fetches user details based on Email Id
 	 * 
@@ -259,11 +191,7 @@ public class UserServiceImpl implements UserService {
 		final String METHOD_NAME = "fetchUserByEmailId(ServiceContext serviceContext,String emailAddress)";
 		logger.entering(CLASS_NAME, METHOD_NAME);
 		EntityManager entityManager = null;
-<<<<<<< HEAD
-
-=======
 				
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		UserTable userTable = new UserTable();
 		UserDetailBO userBO = new UserDetailBO();
 		try {
@@ -273,30 +201,18 @@ public class UserServiceImpl implements UserService {
 			//Perform Business Logic 
 			userTable = internalImplInstance.fetchUserByEmailId(entityManager,emailAddress);
 			userBO = UserObjectPreparationHelper.convertUserEntityToUserDetailBO(userTable);
-<<<<<<< HEAD
-
-		} catch(Exception e) {
-			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
-			e.printStackTrace();
-
-=======
 			
 		} catch(Exception e) {
 			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
 			e.printStackTrace();
 			
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 			// Release the DB resources
 			if (entityManager != null
 					&& entityManager.getTransaction().isActive()) {
 				entityManager.getTransaction().rollback();
 			}
 			//Log and Throw ProgrammingException
-<<<<<<< HEAD
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-=======
 		//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} finally {
 			// Close Entity manager if open
 			if (entityManager != null) {
@@ -330,40 +246,24 @@ public class UserServiceImpl implements UserService {
 		} catch(NoResultException e) {
 			logger.debug("No Result found with Entered Email Address: "+e);
 			e.printStackTrace();
-<<<<<<< HEAD
-
-		} catch(Exception e) {
-			logger.debug("===========UserServiceImpl EXCEPTION=============== ");
-			e.printStackTrace();
-
-=======
 			
 		} catch(Exception e) {
 			logger.debug("===========UserServiceImpl EXCEPTION=============== ");
 			e.printStackTrace();
 			
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 			// Release the DB resources
 			if (entityManager != null
 					&& entityManager.getTransaction().isActive()) {
 				entityManager.getTransaction().rollback();
 			}
 			//Log and Throw ProgrammingException
-<<<<<<< HEAD
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-=======
 		//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} finally {
 			// Close Entity manager if open
 			if (entityManager != null) {
 				EntityManagerUtil.closeConnection(entityManager);
 			}
 		}
-<<<<<<< HEAD
-		logger.exiting(CLASS_NAME, METHOD_NAME);
-=======
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		return isProcessSuccess;
 	}
 
@@ -382,11 +282,7 @@ public class UserServiceImpl implements UserService {
 		final String METHOD_NAME = "updateUser(ServiceContext serviceContext,UserDetailBO userDetailBO)";
 		logger.entering(CLASS_NAME, METHOD_NAME);
 		EntityManager entityManager = null;
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		boolean isProcessSuccess = false;
 		try {
 			entityManager = EntityManagerUtil.getEntityManagerUsingDataSrc(serviceContext);
@@ -410,21 +306,13 @@ public class UserServiceImpl implements UserService {
 				entityManager.getTransaction().rollback();
 			}
 			//Log and Throw ProgrammingException
-<<<<<<< HEAD
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-=======
 		//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		} finally {
 			// Close Entity manager if open
 			if (entityManager != null) {
 				EntityManagerUtil.closeConnection(entityManager); 
 			}
 		}
-<<<<<<< HEAD
-		logger.exiting(CLASS_NAME, METHOD_NAME);
-=======
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		return isProcessSuccess;
 	}
 
@@ -442,54 +330,6 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
-<<<<<<< HEAD
-	/**
-	 * 
-	 */
-	@Override
-	public boolean registerUserInPendedState(ServiceContext serviceContext,
-			UserDetailBO userDetailBO) {
-		final String METHOD_NAME = "updateUser(ServiceContext serviceContext,UserDetailBO userDetailBO)";
-		logger.entering(CLASS_NAME, METHOD_NAME);
-		boolean isProcessSuccess=false;
-		EntityManager entityManager = null;
-		try{
-			entityManager = EntityManagerUtil.getEntityManagerUsingDataSrc(serviceContext);
-			//Begin Transaction
-			entityManager.getTransaction().begin();
-			isProcessSuccess = internalImplInstance.registerUserInPendedState(entityManager, userDetailBO);
-
-			if (isProcessSuccess == false) {
-				logger.debug("userId Already exists");
-
-			} else {
-				//Commit Transaction
-				entityManager.getTransaction().commit();
-			}
-		}catch(Exception e) {
-			logger.debug("===========UserServiceImpl EXCEPTION=============== "+e);
-			e.printStackTrace();
-			isProcessSuccess = false;
-			// Release the DB resources
-			if (entityManager != null
-					&& entityManager.getTransaction().isActive()) {
-				entityManager.getTransaction().rollback();
-			}
-			//Log and Throw ProgrammingException
-			//	throw new ProgrammingException(CLASS_NAME, METHOD_NAME, e);
-		} finally {
-			// Close Entity manager if open
-			if (entityManager != null) {
-				EntityManagerUtil.closeConnection(entityManager); 
-			}
-		}
-		logger.exiting(CLASS_NAME, METHOD_NAME);
-
-		return isProcessSuccess;
-	}
-
-=======
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 
 
 }

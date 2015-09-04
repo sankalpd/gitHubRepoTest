@@ -41,11 +41,7 @@ public class UserObjectPreparationHelper {
 		logger.entering(CLASS_NAME, METHOD_NAME);
 		UserTable userTableEntity = new UserTable();
 		
-<<<<<<< HEAD
-		logger.debug("UserID in UOPH::::::::::::"+userDetailBO.getUserId());
-=======
 		logger.debug("UserID in UOPHE::::::::::::"+userDetailBO.getUserId());
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		userTableEntity.setUserId(userDetailBO.getUserId());
 		userTableEntity.setUserFirstName(userDetailBO.getFirstName());
 		userTableEntity.setUserLastName(userDetailBO.getLastName());
@@ -92,11 +88,7 @@ public class UserObjectPreparationHelper {
 	 * @return UserDetailBO userDetailBO;
 	 */
 	public static List<UserDetailBO> convertUserDetailEntityListToUserDetailBOList(List<Object[]> userTableEntityList) {
-<<<<<<< HEAD
-		final String METHOD_NAME = "convertUserEntityToUserDetailBO(UserTable userTableEntity)";
-=======
 		final String METHOD_NAME = "convertUserDetailEntityListToUserDetailBOList(UserTable userTableEntity)";
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		logger.entering(CLASS_NAME, METHOD_NAME);
 		List<UserDetailBO> userDetailBOList = new ArrayList<UserDetailBO>();
 
@@ -105,29 +97,16 @@ public class UserObjectPreparationHelper {
 		} else {
 			for(Object[] resultElement : userTableEntityList){
 				UserDetailBO userDetailBO = new UserDetailBO();
-<<<<<<< HEAD
-				
-=======
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 				userDetailBO.setUserId((int)resultElement[0]);
 				userDetailBO.setUserEmailId((String)resultElement[1]);
 				userDetailBO.setFirstName((String)resultElement[2]);
 				userDetailBO.setLastName((String)resultElement[3]);
-<<<<<<< HEAD
-				userDetailBO.setUserStatus((String)resultElement[5]);
-				userDetailBO.setUserVerificationKey((String)resultElement[6]);
-=======
 				userDetailBO.setUserStatus((String)resultElement[4]);
 				userDetailBO.setUserVerificationKey((String)resultElement[5]);
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 				
 				userDetailBOList.add(userDetailBO);
 			}
 			logger.exiting(CLASS_NAME, METHOD_NAME);
-<<<<<<< HEAD
-
-=======
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 		}
 		return userDetailBOList;
 	}

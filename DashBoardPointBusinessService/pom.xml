@@ -59,7 +59,11 @@
 					<include>**/*.xml</include>
 					<include>**/*.java</include>
 					<include>**/*.jar</include>
+<<<<<<< HEAD
 					<include>**/*.properties</include>
+=======
+					
+>>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 				</includes>
 				<filtering>false</filtering>
 			</resource>

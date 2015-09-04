@@ -18,21 +18,13 @@ public class ServiceContext extends EntityContext {
 	private static boolean isLocalhostContext = false;
 	
 	/**
-<<<<<<< HEAD
 	 * Default Application Id for ERUDIRECRUITMENT Application
-=======
-	 * Default Application Id for DASHBOARDPOINT Application
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 	 */
 	//TODO
 	private static final String STR_DEFAULT_APP_ID = "";
 	
 	/**
-<<<<<<< HEAD
 	 * Default User Id for ERUDIRECRUITMENT Application
-=======
-	 * Default User Id for DASHBOARBPOINT Application
->>>>>>> 5599bb4bb882787631f12081c56f606c8d751dfc
 	 */
 	//TODO
 	private static final String STR_DEFAULT_USER_ID = "";
