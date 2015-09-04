@@ -59,7 +59,7 @@
 					<include>**/*.xml</include>
 					<include>**/*.java</include>
 					<include>**/*.jar</include>
-					<include>**/*.properties</include>
+					
 				</includes>
 				<filtering>false</filtering>
 			</resource>
