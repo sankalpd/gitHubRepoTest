@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="Content-Type"
+			content="application/xhtml+xml; charset=UTF-8" />
+		<title>Dashboard Point</title>
+	</h:head>
+	<h:body>
+		<div id="header">
+			<table width="100%" style="background-color: #DEEAFC">
+				<tr align="center">
+					<td align="center"><p:spacer height="0" width="40"></p:spacer>
+						<h:outputText style="font-size :24px;"
+							value="Welcome to Dashboard Point" /> &nbsp;</td>
+				</tr>
+			</table>
+		</div>
+		<h:form id="formLogin">
+
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenConstants"
+				var="constant" />
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenButtonNameConstants"
+				var="buttonConstant" />
+			<p:panel id="loginPanel" header="#{constant.logInHeader}"
+				toggleable="false" styleClass="loginPanel">
+				<h:outputText styleClass="outputText" value=""></h:outputText>
+				<h:outputText styleClass="outputText" value=""></h:outputText>
+				<h:outputText
+					style="#{authenticationBB.screenDisplayData.message.screenResponseMessageColor}"
+					value="#{authenticationBB.screenDisplayData.message.screenResponseMessageForUser}"
+					styleClass="outputText"
+					rendered="#{authenticationBB.renderer.dataRenderer.userTextRenderer}"
+					escape="false"></h:outputText>
+				<h:outputText styleClass="outputText" value=""></h:outputText>
+
+				<h:panelGrid styleClass="contentAlignment" columns="2"
+					cellpadding="5" style="width:100%;">
+					<h:outputText styleClass="lable" value="#{constant.userID}"></h:outputText>
+					<h:inputText value="#{authenticationBB.screenDisplayData.userEmailId}"
+						style="font: bold 14px tahoma; width:100%;" />
+
+
+					<h:outputText styleClass="lable" value="#{constant.userPassword}"></h:outputText>
+					<h:inputSecret
+						value="#{authenticationBB.screenDisplayData.userPassword}"
+						style="font: bold 14px tahoma; width:100%;" />
+					<h:outputText value=" "></h:outputText>
+					<h:outputText value=" "></h:outputText>
+					<h:outputText value=" "></h:outputText>
+					<h:outputText value=" "></h:outputText>
+
+
+				</h:panelGrid>
+				<h:panelGrid columns="4" width="240" border="0"
+					styleClass="messageAlignment">
+					<p:spacer width="95" height="0"></p:spacer>
+					<p:commandButton value="#{buttonConstant.login}"
+						style="font:bold 14px tahoma; 	width: 100px;height: 40px; float: right;"
+						ajax="false" action="#{authenticationBB.logInAction}"></p:commandButton>
+					<p:spacer width="70" height="0"></p:spacer>
+					<p:commandButton value="#{buttonConstant.cancel}"
+						style="font:bold 14px tahoma; 	width: 100px;height: 40px; float: left;"
+						ajax="false"
+						action="#{authenticationBB.logOutCancelAction('cancel')}"></p:commandButton>
+				</h:panelGrid>
+
+
+
+				<h:panelGrid columns="6" cellpadding="5">
+					<p:spacer width="95" height="0"></p:spacer>
+					<p:commandLink value="#{buttonConstant.forgotPasswordCommandLink}"
+						style="font: 12px tahoma;float: left;color:blue;" update="@form"
+						actionListener="#{authenticationBB.forgotActionListener}"
+						oncomplete="PF('passwordDialog').show()"></p:commandLink>
+					<p:spacer width="70" height="0"></p:spacer>
+					<p:commandLink value="#{buttonConstant.signUpCommandLink}"
+						style="font: 12px tahoma;float: left;color:blue;"
+						action="#{authenticationBB.newUserAccount}"></p:commandLink>
+				</h:panelGrid>
+
+				<p:dialog modal="true" widgetVar="passwordDialog" draggable="true"
+					width="350" height="150" resizable="false">
+					<h:panelGrid columns="1" cellspacing="6" style="width:100%;text-align: center;">
+				
+						<h:outputText value="Please enter email address:"
+							style="font: bold 15px tahoma; float: center;"></h:outputText>
+						<h:inputText
+							value="#{authenticationBB.screenDisplayData.passwordEmailAddress}"
+							style="font: bold 12px tahoma;  float: center; width:70%;"></h:inputText>
+							<p:spacer width="25" height="0"></p:spacer>
+						<p:commandButton value="#{buttonConstant.submit}"
+							style="font: bold 12px tahoma; 	width: 75px; float: center; height: 30px;"
+							action="#{authenticationBB.forgotIdPasswordAction('password')}"></p:commandButton>
+					</h:panelGrid>
+				</p:dialog>
+			</p:panel>
+
+		</h:form>
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/stylesheet.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/cssOverrides.css" />
+		<p:ajaxStatus onstart="PF('statusDialog').show();"
+			onsuccess="PF('statusDialog').hide();"
+			onerror="PF('statusDialog').hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" draggable="false"
+			closable="true" width="570" height="380">
+			<h:graphicImage library="images" name="wait.gif" />
+		</p:dialog>
+	</h:body>
+</f:view>
+</html>

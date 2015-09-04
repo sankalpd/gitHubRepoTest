@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<business-process-report>
+	<business-process selected="Reconciliation">
+		<b-proc fontSize="16pt">
+			<b-proc-name>1 Reconciliation</b-proc-name>
+			<b-proc-desc>Recon description</b-proc-desc>
+		</b-proc>
+		<b-proc fontSize="16pt">
+			<b-proc-name>1.1 Positive Reconciliation</b-proc-name>
+			<b-proc-desc>Positive Recon description</b-proc-desc>
+		</b-proc>
+		<b-proc fontSize="16pt">
+			<b-proc-name>1.1.1 Positive Reconciliation</b-proc-name>
+			<b-proc-desc>Positive Recon description</b-proc-desc>
+		</b-proc>
+		<b-proc fontSize="16pt">
+			<b-proc-name>1.1.1.1 Positive Reconciliation</b-proc-name>
+			<b-proc-desc>Positive Recon description</b-proc-desc>
+		</b-proc>
+		<b-proc fontSize="16pt">
+			<b-proc-name>1.1.2 Positive Reconciliation</b-proc-name>
+			<b-proc-desc>Positive Recon description</b-proc-desc>
+		</b-proc>
+		<b-proc fontSize="16pt">
+			<b-proc-name>1.2 Negative Reconciliation</b-proc-name>
+			<b-proc-desc>Negative Recon description</b-proc-desc>
+		</b-proc>
+		<b-proc fontSize="16pt">
+			<b-proc-name>1.2.1 Positive Reconciliation</b-proc-name>
+			<b-proc-desc>Positive Recon description</b-proc-desc>
+		</b-proc>
+	</business-process>
+	<features>
+		<feature>
+			<f-bus-proc-name>Positive Invoice Reconciliation</f-bus-proc-name>
+			<f-name>2.1 Reconcile Positive Invoice</f-name>
+			<f-req>Feature Requirement</f-req>
+			<f-desc>This feature will reconcile Positive Invoice.</f-desc>
+			<f-bus-rules>
+				<bus_rule>
+					<bus_rule_name>Business rule</bus_rule_name>
+					<bus_rule_condition>Valid User name and Password should be entered</bus_rule_condition>
+					<bus_rule_success>Business Maintanence screen should be displayed</bus_rule_success>
+					<bus_rule_failure>Error message should be displayed</bus_rule_failure>
+				</bus_rule>
+				<bus_rule>
+					<bus_rule_name>Business rule</bus_rule_name>
+					<bus_rule_condition>Valid User name and Password should be entered</bus_rule_condition>
+					<bus_rule_success>Business Maintanence screen should be displayed</bus_rule_success>
+					<bus_rule_failure>Error message should be displayed</bus_rule_failure>
+				</bus_rule>
+			</f-bus-rules>
+		</feature>
+		<feature>
+			<f-bus-proc-name></f-bus-proc-name>
+			<f-name>2.1.1 Reconcile Positive Invoice - sub</f-name>
+			<f-req>Reconcile Positive Invoice - sub req</f-req>
+			<f-desc>Reconcile Positive Invoice - sub desc</f-desc>
+			<f-bus-rules>
+				<bus_rule>
+					<bus_rule_name>Reconcile Positive Invoice - sub rules</bus_rule_name>
+					<bus_rule_condition>Valid User name and Password should be entered</bus_rule_condition>
+					<bus_rule_success>Business Maintanence screen should be displayed</bus_rule_success>
+					<bus_rule_failure>Error message should be displayed</bus_rule_failure>
+				</bus_rule>
+				<bus_rule>
+					<bus_rule_name>Business rule</bus_rule_name>
+					<bus_rule_condition>Valid User name and Password should be entered</bus_rule_condition>
+					<bus_rule_success>Business Maintanence screen should be displayed</bus_rule_success>
+					<bus_rule_failure>Error message should be displayed</bus_rule_failure>
+				</bus_rule>
+			</f-bus-rules>
+		</feature>
+		<feature>
+			<f-bus-proc-name>Negative Invoice Reconciliation</f-bus-proc-name>
+			<f-name>2.2 Reconcile Negative Invoice</f-name>
+			<f-req>Negative Invoice should be reconciled&#xA;1. If Negative
+				Invoice is associated with Refunds, it should be ready for Check
+				Writer Processing&#xA;2. If Negative Invoice is associated with
+				Routed Payments, it should create a New Payment&#xA;3. If Negative
+				Invoice is associated with Over Age Adjustment, it should be ready
+				to be picked by next Invoice as carried forward Adjustment.</f-req>
+			<f-bus-rules>Business Rule Name</f-bus-rules>
+			<f-desc>This feature will reconcile Negative Invoice that is
+				associated with Refund or Adjustment or Routed Payment</f-desc>
+			<f-bus-rules>
+				<bus_rule>
+					<bus_rule_name>Reconcile Negative Invoice - sub rules</bus_rule_name>
+					<bus_rule_condition>Valid User name and Password should be entered</bus_rule_condition>
+					<bus_rule_success>Business Maintanence screen should be displayed</bus_rule_success>
+					<bus_rule_failure>Error message should be displayed</bus_rule_failure>
+				</bus_rule>
+			</f-bus-rules>
+		</feature>
+		<feature>
+			<f-bus-proc-name></f-bus-proc-name>
+			<f-name>2.2.1 Reconcile Negative Invoice - sub</f-name>
+			<f-req>Reconcile Negative Invoice - sub req</f-req>
+			<f-desc>Reconcile Negative Invoice - sub desc</f-desc>
+			<f-bus-rules>
+				<bus_rule>
+					<bus_rule_name></bus_rule_name>
+					<bus_rule_condition></bus_rule_condition>
+					<bus_rule_success></bus_rule_success>
+					<bus_rule_failure></bus_rule_failure>
+				</bus_rule>
+			</f-bus-rules>
+		</feature>
+	</features>
+	<scenarios>
+		<scenario-business-process>Reconciliation</scenario-business-process>
+		<feature-scenario>
+			<feature-scenario-name>3.1 Reconcile Positive Invoice Feature
+			</feature-scenario-name>
+			<lowest-bus-proc>Positive Invoice Reconciliation</lowest-bus-proc>
+			<scenario>
+				<scenario-name>3.1.1 Given Invoice is in Ready Reconciliation State
+					and Payment is attached When Positive invoice is reconciled Then
+					Should Reconcile the Invoice and Update Invoice Status to Completed
+					and Associated payment will be in Completed state too
+				</scenario-name>
+				<scenario-precondition>1. Payment Amount must be equal to Invoice
+					Amount.&#xA;2. Invoice should not have any adjustment created.
+				</scenario-precondition>
+				<scenario-expected-result>1. Invoice state should be
+					Completed&#xA;2. Payment State should be Competed&#xA;3. All
+					Invoice Member Billed Item are balance with Invoice Member Billed
+					Item Reconciliation Bucket</scenario-expected-result>
+				<scenario-test-info>1. Scenario Test Class&#xA;2. Scenario Test
+					Method</scenario-test-info>
+				<application-column>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+				</application-column>
+			</scenario>
+			<scenario>
+				<scenario-name>3.1.2 Given Invoice is in Ready Reconciliation State
+					and Payment is attached When Positive invoice is reconciled Then
+					Should Reconcile the Invoice and Update Invoice Status to Completed
+					and Associated payment will be in Completed state too
+				</scenario-name>
+				<scenario-precondition>1. Payment Amount must be equal to Invoice
+					Amount.&#xA;2. Invoice should not have any adjustment created.
+				</scenario-precondition>
+				<scenario-expected-result>1. Invoice state should be
+					Completed&#xA;2. Payment State should be Competed&#xA;3. All
+					Invoice Member Billed Item are balance with Invoice Member Billed
+					Item Reconciliation Bucket</scenario-expected-result>
+				<scenario-test-info>1. Scenario Test Class&#xA;2. Scenario Test
+					Method</scenario-test-info>
+				<application-column>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+				</application-column>
+			</scenario>
+			<scenario>
+				<scenario-name>3.1.3 Given Invoice is in Ready Reconciliation State
+					and Payment is attached When Positive invoice is reconciled Then
+					Should Reconcile the Invoice and Update Invoice Status to Completed
+					and Associated payment will be in Completed state too
+				</scenario-name>
+				<scenario-precondition>1. Payment Amount must be equal to Invoice
+					Amount.&#xA;2. Invoice should not have any adjustment created.
+				</scenario-precondition>
+				<scenario-expected-result>1. Invoice state should be
+					Completed&#xA;2. Payment State should be Competed&#xA;3. All
+					Invoice Member Billed Item are balance with Invoice Member Billed
+					Item Reconciliation Bucket</scenario-expected-result>
+				<scenario-test-info>1. Scenario Test Class&#xA;2. Scenario Test
+					Method</scenario-test-info>
+				<application-column>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+				</application-column>
+			</scenario>
+		</feature-scenario>
+		<feature-scenario>
+			<feature-scenario-name>3.2 Reconcile Positive Invoice Feature
+			</feature-scenario-name>
+			<lowest-bus-proc>Negative Invoice Reconciliation</lowest-bus-proc>
+			<scenario>
+				<scenario-name>3.2.1 Given Invoice is in Ready Reconciliation State
+					and Payment is attached When Positive invoice is reconciled Then
+					Should Reconcile the Invoice and Update Invoice Status to Completed
+					and Associated payment will be in Completed state too
+				</scenario-name>
+				<scenario-precondition>1. Payment Amount must be equal to Invoice
+					Amount.&#xA;2. Invoice should not have any adjustment created.
+				</scenario-precondition>
+				<scenario-expected-result>1. Invoice state should be
+					Completed&#xA;2. Payment State should be Competed&#xA;3. All
+					Invoice Member Billed Item are balance with Invoice Member Billed
+					Item Reconciliation Bucket</scenario-expected-result>
+				<scenario-test-info>1. Scenario Test Class&#xA;2. Scenario Test
+					Method</scenario-test-info>
+				<application-column>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+				</application-column>
+			</scenario>
+			<scenario>
+				<scenario-name>3.2.2 Given Invoice is in Ready Reconciliation State
+					and Payment is attached When Positive invoice is reconciled Then
+					Should Reconcile the Invoice and Update Invoice Status to Completed
+					and Associated payment will be in Completed state too
+				</scenario-name>
+				<scenario-precondition>1. Payment Amount must be equal to Invoice
+					Amount.&#xA;2. Invoice should not have any adjustment created.
+				</scenario-precondition>
+				<scenario-expected-result>1. Invoice state should be
+					Completed&#xA;2. Payment State should be Competed&#xA;3. All
+					Invoice Member Billed Item are balance with Invoice Member Billed
+					Item Reconciliation Bucket</scenario-expected-result>
+				<scenario-test-info>1. Scenario Test Class&#xA;2. Scenario Test
+					Method</scenario-test-info>
+				<application-column>
+					<table-data>
+						<table-name>Invoice</table-name>
+						<column-name>Invoice Status</column-name>
+						<column-value>Completed</column-value>
+					</table-data>
+				</application-column>
+			</scenario>
+		</feature-scenario>
+	</scenarios>
+</business-process-report>

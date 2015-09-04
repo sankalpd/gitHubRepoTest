@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>header</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+
+
+	<script type="text/javascript">
+        function ScrollPage(location) {
+   //     	alert("One");
+        	window.location.hash=location;
+   //        alert("Two");
+        }
+	</script>
+
+
+</h:head>
+<h:body>
+	<h:form id="headerForm">
+		<div id="header">
+			<table width="100%" style="background-color: #DEEAFC">
+				<tr align="center">
+					<td align="right" width = "56%">
+						<h:outputText style="font-size :24px;" value="Dashboard Point" />
+						&nbsp;</td>
+							
+					<td align="right" width = "44%">
+					<h:outputLabel style="font-size :20px;"
+							value="Welcome "></h:outputLabel>
+					<h:outputLabel style="font-size :20px;"
+							value="#{authenticationBB.screenDisplayData.headerName}"></h:outputLabel>
+						<p:spacer height="0" width="20"></p:spacer> <p:commandLink
+							value="Login"
+							rendered="#{authenticationBB.renderer.dataRenderer.loginRenderer}"
+							action="#{authenticationBB.logOutCancelAction('login')}"
+							ajax="false"></p:commandLink> <p:commandLink value="Logout"
+							rendered="#{authenticationBB.renderer.dataRenderer.logoutRenderer}"
+							action="#{authenticationBB.logOutCancelAction('logout')}"
+							ajax="false"></p:commandLink></td>
+				</tr>
+			</table>
+		</div>
+	</h:form>
+
+</h:body>
+</html>

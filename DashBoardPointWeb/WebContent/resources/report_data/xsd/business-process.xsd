@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- XML Schema Generated from XML Document on Mon Sep 30 2013 23:10:35 
+		GMT-0500 (Central Standard Time) -->
+	<!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+	<xs:element name="business-process-report">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="business-process">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="b-proc" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="b-proc-name" type="xs:string"></xs:element>
+										<xs:element name="b-proc-desc" type="xs:string"></xs:element>
+									</xs:sequence>
+									<xs:attribute name="fontSize" type="xs:string"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="selected" type="xs:string"></xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="features">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="feature" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="f-bus-proc-name" type="xs:string"></xs:element>
+										<xs:element name="f-name" type="xs:string"></xs:element>
+										<xs:element name="f-req" type="xs:string"></xs:element>
+										<xs:element name="f-desc" type="xs:string"></xs:element>
+										<xs:element name="f-bus-rules">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="bus_rule" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="bus_rule_name" type="xs:string"></xs:element>
+																<xs:element name="bus_rule_condition" type="xs:string"></xs:element>
+																<xs:element name="bus_rule_success" type="xs:string"></xs:element>
+																<xs:element name="bus_rule_failure" type="xs:string"></xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="scenarios">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="scenario-business-process" type="xs:string"></xs:element>
+							<xs:element name="feature-scenario" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="feature-scenario-name" type="xs:string"></xs:element>
+										<xs:element name="lowest-bus-proc" type="xs:string"></xs:element>
+										<xs:element name="scenario" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="scenario-name" type="xs:string"></xs:element>
+													<xs:element name="scenario-precondition" type="xs:string"></xs:element>
+													<xs:element name="scenario-expected-result"
+														type="xs:string"></xs:element>
+													<xs:element name="scenario-test-info" type="xs:string"></xs:element>
+													<xs:element name="application-column">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="table-data" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="table-name" type="xs:string"></xs:element>
+																			<xs:element name="column-name" type="xs:string"></xs:element>
+																			<xs:element name="column-value" type="xs:string"></xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

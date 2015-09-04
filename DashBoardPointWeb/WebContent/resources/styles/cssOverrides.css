@@ -1,0 +1,79 @@
+@CHARSET "ISO-8859-1";
+
+.ui-widget {
+	font-size: 100%;
+}
+
+.ui-widget .ui-widget {
+	font-size: 100%;
+}
+
+.fileinput-button input {
+	font-size: 100%;
+}
+
+*+html .fileinput-button {
+	font-size: 100%;
+}
+
+.outputLabel {
+	font-size: 100%;
+}
+
+.headerAlignment {
+	text-align: left;
+}
+
+.contentAlignment {
+	text-align: left;
+}
+
+.messageAlignment {
+	text-align: center;
+}
+
+.commandLink {
+	font-weight: bold;
+}
+
+.lable {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.boldLink {
+	font-weight: bold;
+}
+
+.menuStyle {
+	padding-right: 10pt;
+	font-weight: bold;
+}
+
+.noBorderPanel {
+	border: none;
+	text-align: center;
+}
+
+.screenMessage {
+	text-align: center;
+}
+
+.screenMessageNoBorderPanel {
+	border: none;
+	text-align: center;
+}
+
+.datalist-noborder .ui-widget-content {
+	border: none;
+}
+
+/ * Size of input * /
+.ui-autocomplete input {
+    width:150px;
+}
+
+/ * Size of the search * /
+.ui-menu {
+    width: 400px;
+}

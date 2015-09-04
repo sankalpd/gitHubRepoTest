@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="Content-Type"
+			content="application/xhtml+xml; charset=UTF-8" />
+		<title>Dashboard Point</title>
+	</h:head>
+	<h:body>
+		<h:form id="formAddUserDetails">
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenConstants"
+				var="constant" />
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenButtonNameConstants"
+				var="buttonConstant" />
+			<p:growl id="growl" showDetail="true" />
+			<p:panel styleClass="screenMessageNoBorderPanel">
+				<p:panel id="addUserDetailsPanelID"
+					header="#{constant.registration}"
+					style="text-align: center;align: center;width:50%;height:60%;margin:60px auto 0px;"
+					rendered="#{!userRegistrationBB.renderer.dataRenderer.verificationPanel}">
+					<p:panel styleClass="screenMessageNoBorderPanel">
+						<h:outputText
+							style="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageColor}"
+							id="screenMessageSelectAddUserPanel"
+							value="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageForUser}"
+							rendered="#{userRegistrationBB.renderer.dataRenderer.userTextRenderer}"
+							escape="false"></h:outputText>
+					</p:panel>
+					<h:panelGrid columns="2" cellpadding="2" border="0" cellspacing="0"
+						width="80%"
+						style="border-spacing: 0;border-collapse: collapse;text-align: left;">
+						<h:outputText value=""></h:outputText>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserEmailIDMsg}"></h:outputText>
+
+						<h:panelGrid columns="3" style="margin: 0px auto;float:left">
+							<p:spacer width="10" height="0"></p:spacer>
+							<h:outputText style="color: red;" value="*"></h:outputText>
+							<h:outputText styleClass="lable" value="#{constant.userID}"></h:outputText>
+						</h:panelGrid>
+						<p:inputText id="userid" style="width: 140%;"
+							value="#{userRegistrationBB.screenDisplayData.userEmailId}"
+							maxlength="40"></p:inputText>
+
+						<h:outputText value=""></h:outputText>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserPasswordMsg}"></h:outputText>
+
+						<h:panelGrid columns="3" style="margin: 0px auto;float:left">
+							<p:spacer width="10" height="0"></p:spacer>
+							<h:outputText style="color: red;" value="*"></h:outputText>
+							<h:outputText styleClass="lable" value="#{constant.userPassword}"></h:outputText>
+						</h:panelGrid>
+
+						<p:password id="pwd" style="width: 140%;"
+							value="#{userRegistrationBB.screenDisplayData.userPassword}"
+							maxlength="20"></p:password>
+
+
+						<h:outputText value=""></h:outputText>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserConfirmPasswordMsg}"></h:outputText>
+
+						<h:panelGrid columns="3" style="margin: 0px auto;float:left">
+							<p:spacer width="10" height="0"></p:spacer>
+							<h:outputText style="color: red;" value="*"></h:outputText>
+							<h:outputText styleClass="lable"
+								value="#{constant.userConfirmPassword}"></h:outputText>
+						</h:panelGrid>
+						<p:password id="confirmPwd" style="width: 140%;"
+							value="#{userRegistrationBB.screenDisplayData.reEnteredPassword}"
+							maxlength="20"></p:password>
+
+						<h:outputText value=""></h:outputText>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserFirstNameMsg}"></h:outputText>
+
+						<h:panelGrid columns="3" style="margin: 0px auto;float:left">
+							<p:spacer width="10" height="0"></p:spacer>
+							<h:outputText style="color: red;" value="*"></h:outputText>
+							<h:outputText styleClass="lable"
+								value="#{constant.userFirstName }" />
+						</h:panelGrid>
+						<p:inputText id="firstName" style="width: 140%;"
+							value="#{userRegistrationBB.screenDisplayData.firstName}"
+							maxlength="20"></p:inputText>
+
+						<h:outputText value=""></h:outputText>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserLastNameMsg}"></h:outputText>
+
+						<h:panelGrid columns="3" style="margin: 0px auto;float:left">
+							<p:spacer width="10" height="0"></p:spacer>
+							<h:outputText style="color: red;" value="*"></h:outputText>
+							<h:outputText styleClass="lable"
+								value="#{constant.userLastName }" />
+						</h:panelGrid>
+						<p:inputText id="secName" style="width: 140%;"
+							value="#{userRegistrationBB.screenDisplayData.lastName}"
+							maxlength="20"></p:inputText>
+
+
+					</h:panelGrid>
+					<h:panelGrid columns="4" cellpadding="6"
+						styleClass="messageAlignment">
+						<p:spacer width="150" height="50" />
+						<p:commandButton value="#{buttonConstant.register}"
+							action="#{userRegistrationBB.registerUserAction}"
+							update="formAddUserDetails"></p:commandButton>
+						<p:spacer width="50" height="50" />
+						<p:commandButton value="#{buttonConstant.cancel}"
+							action="#{userRegistrationBB.cancelRegistration}"
+							update="formAddUserDetails"></p:commandButton>
+					</h:panelGrid>
+
+				</p:panel>
+
+				<p:panel id="successAddUserDetailsPanelID"
+					style="text-align: center;align: center;width:50%;height:60%;margin:60px auto 0px;"
+					header="#{constant.verification}"
+					rendered="#{userRegistrationBB.renderer.dataRenderer.verificationPanel}">
+					<p:panel styleClass="screenMessageNoBorderPanel"
+						rendered="#{!userRegistrationBB.renderer.dataRenderer.successfullDataAddPanelRenderer}">
+						<h:panelGrid columns="1" style="margin: 0px auto;float:center">
+							<h:outputText style="color: blue;"
+								value="Please Enter Verification Code Sent To Email Address"></h:outputText>
+						</h:panelGrid>
+						<h:panelGrid columns="5" style="margin: 0px auto;float:center">
+
+							<h:outputText value="Verification Code : "></h:outputText>
+							<p:spacer width="1" height="0"></p:spacer>
+							<p:inputText style="width: 90%;"
+								value="#{userRegistrationBB.screenDisplayData.verificationCode}"
+								maxlength="6"></p:inputText>
+							<p:spacer width="5" height="0"></p:spacer>
+							
+							<h:panelGrid columns="2" style="margin: 0px auto;float:center">
+							<p:commandLink update="@form" action="#{userRegistrationBB.resend}"  value="Resend" title = "Resend" 
+							styleClass="ui-icon ui-icon-arrowreturnthick-1-w" >
+        					</p:commandLink>
+							<p:commandLink update="@form" action="#{userRegistrationBB.resend}"  value="resend" style="color:blue" >
+        					</p:commandLink>
+							</h:panelGrid>
+        					
+						</h:panelGrid>
+						<h:panelGrid columns="3" style="margin: 0px auto;float:center">
+							<p:commandButton value="#{buttonConstant.submit}"
+								action="#{userRegistrationBB.verifyUserEmailAction}"
+								update="formAddUserDetails"
+								rendered="#{!userRegistrationBB.renderer.dataRenderer.verificationHomeScreenPanel}"></p:commandButton>
+							<p:commandButton value="#{buttonConstant.submit}"
+								action="#{userRegistrationBB.verifyUserEmailActionFromLoginScreen}"
+								update="formAddUserDetails"
+								rendered="#{userRegistrationBB.renderer.dataRenderer.verificationHomeScreenPanel}"></p:commandButton>
+							<p:spacer width="10" height="0"></p:spacer>
+							<p:commandButton value="#{buttonConstant.cancel}"
+								action="#{userRegistrationBB.cancelVerification}"
+								update="formAddUserDetails"></p:commandButton>
+						</h:panelGrid>
+
+					</p:panel>
+					<p:panel
+						rendered="#{userRegistrationBB.renderer.dataRenderer.successfullDataAddPanelRenderer}">
+						<p:panel styleClass="screenMessageNoBorderPanel">
+							<h:outputText
+								style="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageColor}"
+								id="screenMessageSelectSuccessfullAddUserPanel"
+								styleClass="messageAlignment"
+								value="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageForUser}"
+								escape="false"></h:outputText>
+						</p:panel>
+						<p:panel styleClass="screenMessageNoBorderPanel">
+							<p:commandLink value="#{buttonConstant.logInLink}"
+								style="font: bold 14px tahoma; color: green; text-align:center;"
+								action="#{authenticationBB.logOutCancelAction('login')}"
+								ajax="false"></p:commandLink>
+						</p:panel>
+					</p:panel>
+				</p:panel>
+
+			</p:panel>
+		</h:form>
+		<p:ajaxStatus onstart="PF('statusDialog').show();"
+			onsuccess="PF('statusDialog').hide();"
+			onerror="PF('statusDialog').hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" draggable="false"
+			closable="true" width="570" height="380">
+			<h:graphicImage library="images" name="wait.gif" />
+		</p:dialog>
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/stylesheet.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/cssOverrides.css" />
+	</h:body>
+</f:view>
+</html>
