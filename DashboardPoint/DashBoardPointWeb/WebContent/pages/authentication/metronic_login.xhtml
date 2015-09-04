@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<!-- <![endif] -->
+<!--  BEGIN HEAD -->
+<head>
+<meta content="" />
+<title>Dashboard Point</title>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<!--  BEGIN GLOBAL MANDATORY STYLES -->
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all"
+	rel="stylesheet" type="text/css" />
+<link
+	href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="../../assets/global/plugins/uniform/css/uniform.default.css"
+	rel="stylesheet" type="text/css" />
+
+<!--  END GLOBAL MANDATORY STYLES -->
+<!--  BEGIN PAGE LEVEL STYLES -->
+<link href="../../assets/global/plugins/select2/select2.css"
+	rel="stylesheet" type="text/css" />
+<link href="../../assets/admin/pages/css/login3.css" rel="stylesheet"
+	type="text/css" />
+<!--  END PAGE LEVEL SCRIPTS -->
+<!--  BEGIN THEME STYLES -->
+<link href="../../assets/global/css/components-rounded.css"
+	id="style_components" rel="stylesheet" type="text/css" />
+<link href="../../assets/global/css/plugins.css" rel="stylesheet"
+	type="text/css" />
+<link href="../../assets/admin/layout/css/layout.css" rel="stylesheet"
+	type="text/css" />
+
+<link href="../../assets/admin/layout/css/themes/default.css"
+	rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../assets/admin/layout/css/custom.css" rel="stylesheet"
+	type="text/css" />
+<!--  END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!--  END HEAD -->
+<!--  BEGIN BODY -->
+<body class="login">
+<h:form>
+	<!--  BEGIN LOGO -->
+	<div class="logo">
+		<h3><b><font color="white"><h:commandLink value="Dashboard Point" actionListener="#{authenticationBB.logOutCancelAction('cancel')}"/></font></b></h3> 
+	</div>
+	<!--  END LOGO -->
+</h:form>
+	
+	<!--  BEGIN SIDEBAR TOGGLER BUTTON -->
+	<div class="menu-toggler sidebar-toggler"></div>
+	<!--  END SIDEBAR TOGGLER BUTTON -->
+
+	<!--  BEGIN LOGIN -->
+	<div class="content">
+		<!--  BEGIN LOGIN FORM -->
+		<h:form id="formLogin" class="login-form">
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenConstants"
+				var="constant" />
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenButtonNameConstants"
+				var="buttonConstant" />
+			<p:panel rendered="#{authenticationBB.renderer.dataRenderer.loginFormRenderer}">
+				<h3 class="form-title">Login to your account</h3>
+				<div class="alert alert-danger display-hide">
+					<button class="close"></button>
+					<span> Enter any username and password. </span>
+	
+				</div>
+				<div class="form-group">
+					<!--  ie8, ie9 does not support html5 placeholder, so we just show
+	            field title for that -->
+					<label class="control-label visible-ie8 visible-ie9">Username</label>
+					<h:outputText
+						style="#{authenticationBB.screenDisplayData.message.screenResponseMessageColor}"
+						value="#{authenticationBB.screenDisplayData.message.screenResponseMessageForUser}"
+						styleClass="outputText"
+						rendered="#{authenticationBB.renderer.dataRenderer.userTextRenderer}"
+						escape="false"></h:outputText>
+					<h:outputText styleClass="outputText" value=""></h:outputText>
+					<div class="input-icon">
+						<i class="fa fa-user"></i>
+						<p:inputText id="username" placeholder="Email Id"
+							value="#{authenticationBB.screenDisplayData.userEmailId}"
+							styleClass="form-control placeholder-no-fix" />	
+					</div>
+				</div>
+	
+				<div class="form-group">
+					<label class="control-label visible-ie8 visible-ie9">Password</label>
+					<div class="input-icon">
+						<i class="fa fa-lock"></i>
+						<p:password id="password" styleClass="form-control placeholder-no-fix" 
+							value="#{authenticationBB.screenDisplayData.userPassword}" placeholder="Password"/>	
+					</div>
+				</div>
+				<div class="form-actions">
+					<label class="checkbox"> <input type="checkbox"
+						name="remember" value="1" /> Remember me
+					</label>
+					<p:commandButton id="pf-login-id" value="#{buttonConstant.login}"
+						styleClass="btn green-haze pull-right"
+						icon="m-icon-swapright m-icon-white" ajax="false"
+						action="#{authenticationBB.logInAction}"></p:commandButton>
+				</div>
+				<div class="login-options">
+					<h4>Or login with</h4>
+					<ul class="social-icons">
+						<li><a class="facebook" href="javascript:;"> </a></li>
+	
+						<li><a class="twitter" href="javascript:;"> </a></li>
+						<li><a class="googleplus" href="javascript:;"> </a></li>
+						<li><a class="linkedin" href="javascript:;"> </a></li>
+					</ul>
+				</div>
+				<div class="forget-password">
+					<h4>Forgot your password ?</h4>
+					<p>
+						no worries, click <h:commandLink value="here"  actionListener="#{authenticationBB.forgotPasswordListerner()}"/> to reset your password.
+					</p>
+	
+				</div>
+				<div class="create-account">
+					<p>
+						Don't have an account yet ?&nbsp; <h:commandLink value="#{buttonConstant.createAnAccount}" actionListener="#{authenticationBB.redirectToMetronicRegisterPage()}"/>
+					</p>
+				</div>
+			</p:panel>
+			<!--  BEGIN FORGOT PASSWORD FORM -->
+			<p:panel id="ForgotUserPassword" styleClass="screenMessageNoBorderPanel">
+					<h:panelGrid columns="1" style="text-align:center;margin: 0px auto;float:center">
+						<h:outputText
+							style="#{authenticationBB.screenDisplayData.message.screenResponseMessageColor}"
+							value="#{authenticationBB.screenDisplayData.message.screenResponseSuccessfullChangedPasswordMessageForUser}"
+							styleClass="outputText"
+							rendered="#{authenticationBB.renderer.messageRenderer.successfulChangedPasswordrenderer}"
+							escape="false"/>
+						<h:outputLabel styleClass="lable" value=""/>
+						<h:commandLink value="#{buttonConstant.logInLink}" actionListener="#{authenticationBB.setRendering()}" rendered="#{authenticationBB.renderer.messageRenderer.successfulChangedPasswordrenderer}"/>
+					</h:panelGrid>						
+					<p:commandButton styleClass="btn green-haze pull-right" value="#{buttonConstant.logInLink}" actionListener="#{authenticationBB.setRendering()}"
+							 				rendered="#{authenticationBB.renderer.dataRenderer.loginLinkRenderer} "/>
+					<p:panel id="forgotPassword" rendered="#{authenticationBB.renderer.dataRenderer.forgotPwdEnterEmailPanelRenderer}">
+								<h:panelGrid columns="1" style="margin: 0px auto;float:center">
+									<h3><b><font color="grey">Forget Password ?</font></b></h3>
+								</h:panelGrid>
+								<h:panelGrid columns="1" style="margin: 0px auto;float:left">
+									<h:outputLabel value="" styleClass="lable"/>
+									<p>Enter your email address below to reset your password</p>
+									<h:outputText style="#{authenticationBB.screenDisplayData.message.screenResponseMessageColor}"
+											  value="#{authenticationBB.screenDisplayData.message.screenResponseErrorMessageForUser}"
+											  styleClass="outputText"
+											  rendered="#{authenticationBB.renderer.messageRenderer.invalidUserEmailIDForgotPanelRenderer}"
+											  escape="false"/>
+								</h:panelGrid>
+								
+									<p:spacer width="1" height="0"/>
+									<div class="input-icon">
+										<i class="fa fa-envelope"></i> 
+										<p:inputText id="email" value="#{authenticationBB.screenDisplayData.passwordEmailAddress}"
+													 styleClass="form-control placeholder-no-fix" placeholder="Email Id"/>
+									</div>
+									<p:spacer width="5" height="0"/>
+								
+								<h:panelGrid columns="3" style="margin: 0px auto;float:center">
+									<h:outputLabel value="" styleClass="lable"/>
+									<h:outputLabel value="" styleClass="lable"/>
+									<h:outputLabel value="" styleClass="lable"/>
+									<p:commandButton value="Back" styleClass="btn green-haze pull-right" action="#{authenticationBB.setRendering()}">
+									</p:commandButton>
+									<p:spacer width="150" height="0"/>
+									<p:commandButton value="#{buttonConstant.submit}" styleClass="btn green-haze pull-right" 
+													update="ForgotUserPassword" icon="m-icon-swapright m-icon-white" action="#{authenticationBB.forgotPasswordAction}">
+									</p:commandButton>
+								</h:panelGrid>
+					</p:panel>
+					<!--  END FORGOT PASSWORD PANEL -->
+					<!--  BEGIN VERIFICATION PANEL -->
+					<p:panel id="verificationCode" rendered="#{authenticationBB.renderer.dataRenderer.verificationPanelRenderer}">
+						<p:panel styleClass="screenMessageNoBorderPanel"
+							rendered="#{authenticationBB.renderer.dataRenderer.successfullDataAddForgotPasswordRenderer}">
+							<h:panelGrid columns="1" style="margin: 0px auto;float:center">
+								<h3><b><font color="grey">Verification</font></b></h3>
+							</h:panelGrid>
+							<h:panelGrid columns="1" style="margin: 0px auto;float:left">
+							<h:outputLabel value="" styleClass="lable"/>					
+							<p>Enter Verification Code Sent To Your Email Address</p>
+								<h:outputText
+									style="#{authenticationBB.screenDisplayData.message.screenResponseMessageColor}"
+									value="#{authenticationBB.screenDisplayData.message.screenResponseVerificationMessageForUser}"
+									styleClass="outputText"
+									rendered="#{authenticationBB.renderer.messageRenderer.invalidVerificationCodeForgotPanelRenderer}"
+									escape="false"></h:outputText>
+							</h:panelGrid>
+							<p:spacer width="1" height="0"/>
+							<div class="input-icon">
+								<i class="fa fa-check"></i>
+								<p:inputText styleClass="form-control placeholder-no-fix"
+									value="#{authenticationBB.screenDisplayData.verificationCode}"
+									maxlength="6" placeholder="Type Verification Code Here . . ."/>
+							</div>
+							<p:spacer width="5" height="0"/>
+							<h:panelGrid columns="3" style="margin: 0px auto;float:center">
+								<h:outputLabel value="" styleClass="lable"/>
+								<h:outputLabel value="" styleClass="lable"/>
+								<h:outputLabel value="" styleClass="lable"/>
+								<p:commandButton value="#{buttonConstant.submit}"
+										action="#{authenticationBB.verifyUserEmailForgotPasswordAction}"
+										update="ForgotUserPassword" styleClass="btn green-haze pull-right"/>
+								<p:spacer width="120" height="0"/>
+								<p:commandButton value="#{buttonConstant.cancel}"
+										action="#{authenticationBB.setRendering()}"
+										styleClass="btn green-haze pull-right"/>
+							</h:panelGrid>
+						</p:panel>
+					</p:panel>
+					<!--  END VERIFICATION PANEL -->
+					<!--  BEGIN CHANGE PASSWORD PANEL -->
+					<p:panel id="changePassword" rendered="#{authenticationBB.renderer.dataRenderer.changePasswordRenderer}">							
+								<h:panelGrid columns="1" style="margin: 0px auto;float:center">
+									<h3><b><font color="grey">Change Password</font></b></h3>
+								</h:panelGrid>
+								<h:outputLabel value="" styleClass="lable"/>
+								<h:outputText styleClass="outputText" value=""
+									rendered="#{authenticationBB.renderer.messageRenderer.invalidChangePasswordForgotPanelRenderer}"/>
+								<h5>Please Enter Your New Password</h5>
+								<div class="form-group">
+									<label class="control-label visible-ie8 visible-ie9">Password</label>
+									<h:outputText
+										style="#{authenticationBB.screenDisplayData.message.screenResponseMessageColor}"
+										value="#{authenticationBB.screenDisplayData.message.screenResponseChangePasswordMessageForUser}"
+										styleClass="outputText"
+										rendered="#{authenticationBB.renderer.messageRenderer.invalidChangePasswordForgotPanelRenderer}"
+										escape="false"></h:outputText>
+									<div class="input-icon">
+										<i class="fa fa-lock"></i> 
+										<p:password id="pwd" styleClass="form-control placeholder-no-fix" placeholder="Password"
+											  value="#{authenticationBB.screenDisplayData.changePassword}"/>
+									</div>
+	
+									<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+									<h:outputLabel value="" styleClass="lable"/>
+									
+									<div class="controls"> 
+										<div class="input-icon">
+											<i class="fa fa-check"></i>
+											<p:password id="confirmPwd" styleClass="form-control placeholder-no-fix" placeholder="Re-Type Password"
+												value="#{authenticationBB.screenDisplayData.changeConfirmPassword}"/>							
+										</div>
+									</div>
+								</div>
+							
+							<h:panelGrid columns="3" style="margin: 0px auto;float:center">
+								<h:outputLabel value="" styleClass="lable"/>
+								<h:outputLabel value="" styleClass="lable"/>
+								<h:outputLabel value="" styleClass="lable"/>						
+								<p:commandButton value="#{buttonConstant.submit}" styleClass="btn green-haze pull-right"
+								action="#{authenticationBB.changePasswordAction}"/>
+								<p:spacer width="120" height="0"></p:spacer>
+								<p:commandButton value="#{buttonConstant.cancel}"
+										action="#{authenticationBB.setRendering()}"
+										styleClass="btn green-haze pull-right"/>
+							</h:panelGrid>
+					</p:panel>
+					<!--  END CHANGE PASSWORD PANEL -->
+				</p:panel>					
+		</h:form>
+
+		<!--  END LOGIN FORM -->
+	</div>
+	<!--  END LOGIN -->
+	<!--  BEGIN COPYRIGHT -->
+	<div class="copyright">2015 &copy; Dashboard Point. Admin
+		Dashboard Template.</div>
+	<!--  END COPYRIGHT -->
+
+	<!--  BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page
+      load time) -->
+	<!--  BEGIN CORE PLUGINS -->
+	<!--  [if lt IE 9]> <script
+      src="../../assets/global/plugins/respond.min.js"></script> <script
+      src="../../assets/global/plugins/excanvas.min.js"></script> <![endif] -->
+	<script src="../../assets/global/plugins/jquery.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/jquery-migrate.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/jquery.blockui.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/jquery.cokie.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<!--  END CORE PLUGINS -->
+	<!--  BEGIN PAGE LEVEL PLUGINS -->
+	<script
+		src="../../assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script type="text/javascript"
+		src="../../assets/global/plugins/select2/select2.min.js"
+		xml:space="preserve"></script>
+
+	<!--  END PAGE LEVEL PLUGINS -->
+	<!--  BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="../../assets/global/scripts/metronic.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/admin/layout/scripts/layout.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/admin/layout/scripts/demo.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/admin/pages/scripts/login.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<!--  END PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript" xml:space="preserve">
+		//<![CDATA[
+		jQuery(document).ready(function() {
+			Metronic.init(); // init metronic core components
+			Layout.init(); // init current layout
+			Login.init();
+			Demo.init();
+		});
+		//]]>
+	</script>
+	<!--  END JAVASCRIPTS -->
+</body>
+<!--  END BODY -->
+
+</html>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta http-equiv="Content-Type"	content="application/xhtml+xml; charset=UTF-8" />
+		<title>Dashboard Point</title>
+	</h:head>
+	<!--  END HEAD -->		
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+		<!--  BEGIN GLOBAL MANDATORY STYLES -->
+		<link
+			href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all"
+			rel="stylesheet" type="text/css" />
+		<link
+			href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css"
+			rel="stylesheet" type="text/css" />
+		<link
+			href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+			rel="stylesheet" type="text/css" />
+		<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css"
+			rel="stylesheet" type="text/css" />
+		<link href="../../assets/global/plugins/uniform/css/uniform.default.css"
+			rel="stylesheet" type="text/css" />
+		
+		<!--  END GLOBAL MANDATORY STYLES -->
+		<!--  BEGIN PAGE LEVEL STYLES -->
+		<link href="../../assets/global/plugins/select2/select2.css"
+			rel="stylesheet" type="text/css" />
+		<link href="../../assets/admin/pages/css/login3.css" rel="stylesheet"
+			type="text/css" />
+		<!--  END PAGE LEVEL SCRIPTS -->
+		<!--  BEGIN THEME STYLES -->
+		<link href="../../assets/global/css/components-rounded.css"
+			id="style_components" rel="stylesheet" type="text/css" />
+		<link href="../../assets/global/css/plugins.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../assets/admin/layout/css/layout.css" rel="stylesheet"
+			type="text/css" />
+		
+		<link href="../../assets/admin/layout/css/themes/default.css"
+			rel="stylesheet" type="text/css" id="style_color" />
+		<link href="../../assets/admin/layout/css/custom.css" rel="stylesheet"
+			type="text/css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/stylesheet.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/cssOverrides.css" />
+		<!--  END THEME STYLES -->
+		<link rel="shortcut icon" href="favicon.ico" />
+	<!--  BEGIN BODY -->
+	<h:body>
+		<h:form id="formAddUserDetails">
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenConstants"
+				var="constant" />
+			<f:loadBundle
+				basename="com.ewt.dashboardpoint.framework.propertyfile.ScreenButtonNameConstants"
+				var="buttonConstant" />
+			<p:growl id="growl" showDetail="true" />			
+				<p:panel id="addUserDetailsPanelID"
+					style="text-align:left;align: center;width:24%;height:60%;margin:60px auto 0px;"
+					rendered="#{!userRegistrationBB.renderer.dataRenderer.verificationPanel}">
+					<h3><b><font color="grey">Sign Up</font></b></h3>
+					<h4>Enter your personal details below:</h4>
+				
+					<p:panel styleClass="screenMessageNoBorderPanel">
+						<h:outputText
+							style="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageColor}"
+							id="screenMessageSelectAddUserPanel"
+							value="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageForUser}"
+							rendered="#{userRegistrationBB.renderer.dataRenderer.userTextRenderer}"
+							escape="false"></h:outputText>
+					</p:panel>
+					<div class="form-group">
+						<label class="control-label visible-ie8 visible-ie9">Full Name</label>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserFirstNameMsg}"></h:outputText>
+						<div class="input-icon">
+							<i class="fa fa-font"></i>
+							<p:inputText id="firstName" styleClass="form-control placeholder-no-fix"
+								value="#{userRegistrationBB.screenDisplayData.firstName}"
+								placeholder="First Name" maxlength="20"></p:inputText>
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserLastNameMsg}"></h:outputText>
+						<div class="input-icon">
+							<i class="fa fa-font"></i> 
+							<p:inputText id="secName" styleClass="form-control placeholder-no-fix"
+								value="#{userRegistrationBB.screenDisplayData.lastName}"
+								placeholder="Last Name" maxlength="20"></p:inputText>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label visible-ie8 visible-ie9">Email</label>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserEmailIDMsg}"></h:outputText>
+						<div class="input-icon">
+							<i class="fa fa-envelope"></i> 
+							<p:inputText id="userid" styleClass="form-control placeholder-no-fix" 
+								value="#{userRegistrationBB.screenDisplayData.userEmailId}"
+								maxlength="40" placeholder="Email Id"></p:inputText>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label visible-ie8 visible-ie9">Password</label>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserPasswordMsg}"></h:outputText>
+						<div class="input-icon">
+							<i class="fa fa-lock"></i> 
+							<p:password id="pwd" styleClass="form-control placeholder-no-fix"
+								value="#{userRegistrationBB.screenDisplayData.userPassword}"
+								maxlength="20"  placeholder="Password"></p:password>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+						<h:outputText style="color: red;"
+							value="#{userRegistrationBB.screenDisplayData.message.invalidUserConfirmPasswordMsg}"></h:outputText>
+						<div class="controls">
+							<div class="input-icon">
+								<i class="fa fa-check"></i>
+								<p:password id="confirmPwd" styleClass="form-control placeholder-no-fix"
+									value="#{userRegistrationBB.screenDisplayData.reEnteredPassword}"
+									maxlength="20" placeholder="Re-Type Password"></p:password>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>
+						<input type="checkbox" name="tnc"/> I agree to the <font color="#6CB5FF">Terms of Service</font> and <font color="#6CB5FF">Privacy Policy</font>			
+						</label>
+						<div id="register_tnc_error">
+						</div>
+					</div>
+
+					<h:panelGrid columns="4" cellpadding="6"
+						styleClass="messageAlignment">
+						<p:spacer width="22" height="30" />
+						<p:commandButton value="Back" styleClass="btn green-haze pull-right"
+							action="#{userRegistrationBB.cancelMetronicVerification()}">
+						</p:commandButton>
+						<p:spacer width="50" height="50" />
+						<p:commandButton value="Sign Up" styleClass="btn green-haze pull-right"
+							action="#{userRegistrationBB.registerUserAction}" 
+							update="formAddUserDetails">
+						</p:commandButton>
+					</h:panelGrid>
+				</p:panel>
+
+				<p:panel id="successAddUserDetailsPanelID"
+					style="text-align: center;align: center;width:30%;height:60%;margin:60px auto 0px;"
+					rendered="#{userRegistrationBB.renderer.dataRenderer.verificationPanel}">
+					<p:panel styleClass="screenMessageNoBorderPanel" style="height:20%"
+						rendered="#{!userRegistrationBB.renderer.dataRenderer.successfullDataAddPanelRenderer}">
+						<h3><b><font color="grey">Verification</font></b></h3>
+						<h:panelGrid columns="1" style="margin: 0px auto;float:left">
+						<h:outputLabel value="" styleClass="lable"/>					
+						<h5>Please Enter Verification Code Sent To Your Email Address</h5>
+						</h:panelGrid>
+						<h:panelGrid columns="5" style="margin: 0px auto;float:center">							
+							<p:spacer width="1" height="0"></p:spacer>
+							<p:inputText styleClass="form-control placeholder-no-fix"
+								value="#{userRegistrationBB.screenDisplayData.verificationCode}"
+								maxlength="6" placeholder="Verification Code"></p:inputText>
+							<p:spacer width="5" height="0"></p:spacer>
+							
+							<h:panelGrid columns="2" style="margin: 0px auto;float:center">
+								<h:commandLink update="@form" action="#{userRegistrationBB.resend()}"  value="Resend" title = "Resend" 
+								styleClass="ui-icon ui-icon-arrowreturnthick-1-w" >
+	        					</h:commandLink>
+								<h:commandLink update="@form" action="#{userRegistrationBB.resend()}"  value="resend" style="color:blue" >
+	        					</h:commandLink>
+							</h:panelGrid>
+        					
+						</h:panelGrid>
+						
+						<h:panelGrid columns="3" style="margin: 0px auto;float:center">
+							<h:outputLabel value="" styleClass="lable"/>
+							<h:outputLabel value="" styleClass="lable"/>
+							<h:outputLabel value="" styleClass="lable"/>
+							<p:commandButton value="#{buttonConstant.submit}"
+								action="#{userRegistrationBB.verifyUserEmailAction}"
+								update="formAddUserDetails" styleClass="btn green-haze pull-right"
+								rendered="#{!userRegistrationBB.renderer.dataRenderer.verificationHomeScreenPanel}">
+							</p:commandButton>
+							<p:commandButton value="#{buttonConstant.submit}"
+								action="#{userRegistrationBB.verifyUserEmailActionFromLoginScreen}"
+								update="formAddUserDetails" styleClass="btn green-haze pull-right"
+								rendered="#{userRegistrationBB.renderer.dataRenderer.verificationHomeScreenPanel}">
+							</p:commandButton>
+							<p:spacer width="40" height="0"></p:spacer>
+							<p:commandButton value="#{buttonConstant.cancel}"
+								action="#{userRegistrationBB.cancelMetronicVerification}"
+								update="formAddUserDetails" styleClass="btn green-haze pull-right">
+							</p:commandButton>
+						</h:panelGrid>
+
+					</p:panel>
+					<p:panel
+						rendered="#{userRegistrationBB.renderer.dataRenderer.successfullDataAddPanelRenderer}">
+						<p:panel styleClass="screenMessageNoBorderPanel">
+							<h:outputText
+								style="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageColor}"
+								id="screenMessageSelectSuccessfullAddUserPanel"
+								styleClass="messageAlignment"
+								value="#{userRegistrationBB.screenDisplayData.message.screenResponseMessageForUser}"
+								escape="false"></h:outputText>
+						</p:panel>
+						<p:panel styleClass="screenMessageNoBorderPanel">
+							<p:commandLink value="#{buttonConstant.logInLink}"
+								style="font: bold 14px tahoma; color: green; text-align:center;"
+								action="#{authenticationBB.logOutCancelAction('login')}"
+								ajax="false"></p:commandLink>
+						</p:panel>
+					</p:panel>
+				</p:panel>
+		</h:form>
+		<p:ajaxStatus onstart="PF('statusDialog').show();"
+			onsuccess="PF('statusDialog').hide();"
+			onerror="PF('statusDialog').hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" draggable="false"
+			closable="true" width="570" height="380">
+			<h:graphicImage library="images" name="wait.gif" />
+		</p:dialog>
+			<!--  END REGISTRATION FORM -->
+
+	<!--  BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page
+      load time) -->
+	<!--  BEGIN CORE PLUGINS -->
+	<!--  [if lt IE 9]> <script
+      src="../../assets/global/plugins/respond.min.js"></script> <script
+      src="../../assets/global/plugins/excanvas.min.js"></script> <![endif] -->
+	<script src="../../assets/global/plugins/jquery.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/jquery-migrate.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/jquery.blockui.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/global/plugins/jquery.cokie.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<!--  END CORE PLUGINS -->
+	<!--  BEGIN PAGE LEVEL PLUGINS -->
+	<script
+		src="../../assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script type="text/javascript"
+		src="../../assets/global/plugins/select2/select2.min.js"
+		xml:space="preserve"></script>
+
+	<!--  END PAGE LEVEL PLUGINS -->
+	<!--  BEGIN PAGE LEVEL SCRIPTS -->
+	<script src="../../assets/global/scripts/metronic.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/admin/layout/scripts/layout.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/admin/layout/scripts/demo.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<script src="../../assets/admin/pages/scripts/login.js"
+		type="text/javascript" xml:space="preserve"></script>
+	<!--  END PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript" xml:space="preserve">
+		//<![CDATA[
+		jQuery(document).ready(function() {
+			Metronic.init(); // init metronic core components
+			Layout.init(); // init current layout
+			Login.init();
+			Demo.init();
+		});
+		//]]>
+	</script>
+	<!--  END JAVASCRIPTS -->
+	</h:body>
+	<!--  END BODY -->
+</f:view>
+</html>

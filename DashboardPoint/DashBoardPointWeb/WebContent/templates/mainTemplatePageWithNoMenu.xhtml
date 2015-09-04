@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+	<h:head>
+		<title>DashBoardPoint</title>
+		<meta http-equiv="Content-Type"
+			content="application/xhtml+xml; charset=UTF-8" />
+		<script type="text/javascript">
+	        function ScrollPage(location) {
+	   //     	alert("One");
+	        	window.location.hash=location;
+	   //        alert("Two");
+	        }
+		</script>
+
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/prettify.css" />
+		<script
+			src="#{facesContext.externalContext.requestContextPath}/resources/js/prettify.js"></script>
+	</h:head>
+	<h:body>
+		<div id="main">
+
+			<div>
+				<ui:insert name="content">
+		    	Content is here.
+	    	</ui:insert>
+			</div>
+		</div>
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/stylesheet.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{facesContext.externalContext.requestContextPath}/resources/styles/cssOverrides.css" />
+			<p:ajaxStatus onstart="PF('statusDialog').show();"
+			onsuccess="PF('statusDialog').hide();"
+			onerror="PF('statusDialog').hide();" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" draggable="false"
+			closable="true" width="570" height="380">
+			<h:graphicImage library="images" name="wait.gif" />
+		</p:dialog>
+	</h:body>
+</f:view>
+</html>

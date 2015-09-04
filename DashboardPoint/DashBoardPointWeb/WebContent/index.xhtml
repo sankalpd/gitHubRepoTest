@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/mainTemplatePageWithNoMenu.xhtml">
+	<ui:define name="content">
+		<h:form id="headerForm1">
+			<div id="header">
+				<table width="100%" style="background-color: #DEEAFC">
+					<tr align="center">
+						<td align="center"><p:spacer height="0" width="240"></p:spacer>
+							<h:outputText style="font-size :24px;"
+								value="Welcome to Dashboard Point" /> &nbsp;</td>
+
+						<td align="right">
+							<p:commandLink value="Login"
+								rendered="#{authenticationBB.renderer.dataRenderer.loginRenderer}"
+								action="#{authenticationBB.logOutCancelAction('login')}"
+								ajax="false">
+							</p:commandLink> 
+							<p:spacer height="0" width="20"></p:spacer>
+							
+							<p:commandLink value="MetronicLogin"
+								rendered="#{authenticationBB.renderer.dataRenderer.metronicLoginRenderer}"
+								action="#{authenticationBB.logOutCancelAction('metronic_login')}"
+								ajax="false">
+							</p:commandLink> 
+							<p:spacer height="0" width="20"></p:spacer>
+							
+							<p:commandLink value="Register"
+								rendered="#{authenticationBB.renderer.dataRenderer.loginRenderer}"
+								action="#{authenticationBB.logOutCancelAction('register')}"
+								ajax="false">
+							</p:commandLink>
+							
+							<p:spacer height="0" width="20"></p:spacer>
+														
+							 <p:commandLink value="Logout"
+								rendered="#{authenticationBB.renderer.dataRenderer.logoutRenderer}"
+								action="#{authenticationBB.logOutCancelAction('logout')}"
+								ajax="false"></p:commandLink></td>
+					</tr>
+				</table>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
